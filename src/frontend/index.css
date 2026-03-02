@@ -1,0 +1,254 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans-Variable.woff2") format("woff2");
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Light mode: clean whites with navy sidebar */
+    --background: 0.975 0.004 250;
+    --foreground: 0.18 0.025 260;
+
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.025 260;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.025 260;
+
+    /* Primary: rich indigo-blue */
+    --primary: 0.42 0.16 265;
+    --primary-foreground: 0.99 0 0;
+
+    --secondary: 0.96 0.008 250;
+    --secondary-foreground: 0.25 0.035 260;
+
+    --muted: 0.955 0.006 240;
+    --muted-foreground: 0.5 0.02 250;
+
+    --accent: 0.93 0.04 260;
+    --accent-foreground: 0.3 0.08 265;
+
+    --destructive: 0.55 0.22 27;
+    --destructive-foreground: 0.99 0 0;
+
+    --border: 0.9 0.012 250;
+    --input: 0.92 0.01 255;
+    --ring: 0.42 0.16 265;
+
+    /* Status colors */
+    --success: 0.55 0.17 145;
+    --success-foreground: 0.99 0 0;
+    --warning: 0.68 0.18 65;
+    --warning-foreground: 0.15 0.02 60;
+    --info: 0.5 0.14 220;
+    --info-foreground: 0.99 0 0;
+
+    /* Charts */
+    --chart-1: 0.48 0.18 265;
+    --chart-2: 0.55 0.17 145;
+    --chart-3: 0.62 0.2 40;
+    --chart-4: 0.52 0.15 300;
+    --chart-5: 0.6 0.15 200;
+
+    /* Sidebar: dark navy */
+    --sidebar: 0.19 0.04 265;
+    --sidebar-foreground: 0.88 0.015 255;
+    --sidebar-primary: 0.6 0.2 265;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.28 0.05 260;
+    --sidebar-accent-foreground: 0.9 0.015 255;
+    --sidebar-border: 0.28 0.04 260;
+    --sidebar-ring: 0.5 0.18 265;
+  }
+
+  .dark {
+    --background: 0.14 0.025 265;
+    --foreground: 0.92 0.01 255;
+
+    --card: 0.18 0.03 265;
+    --card-foreground: 0.92 0.01 255;
+
+    --popover: 0.18 0.03 265;
+    --popover-foreground: 0.92 0.01 255;
+
+    --primary: 0.6 0.2 265;
+    --primary-foreground: 0.12 0.02 265;
+
+    --secondary: 0.22 0.04 265;
+    --secondary-foreground: 0.88 0.012 255;
+
+    --muted: 0.22 0.03 260;
+    --muted-foreground: 0.6 0.02 255;
+
+    --accent: 0.25 0.05 265;
+    --accent-foreground: 0.9 0.015 260;
+
+    --destructive: 0.65 0.2 25;
+    --destructive-foreground: 0.99 0 0;
+
+    --border: 0.27 0.035 260;
+    --input: 0.25 0.03 260;
+    --ring: 0.55 0.18 265;
+
+    --success: 0.55 0.18 145;
+    --success-foreground: 0.99 0 0;
+    --warning: 0.7 0.17 65;
+    --warning-foreground: 0.15 0.02 60;
+    --info: 0.55 0.15 220;
+    --info-foreground: 0.99 0 0;
+
+    --chart-1: 0.55 0.2 265;
+    --chart-2: 0.58 0.18 145;
+    --chart-3: 0.66 0.2 40;
+    --chart-4: 0.56 0.18 300;
+    --chart-5: 0.62 0.17 200;
+
+    --sidebar: 0.12 0.03 265;
+    --sidebar-foreground: 0.88 0.015 255;
+    --sidebar-primary: 0.6 0.2 265;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.2 0.04 260;
+    --sidebar-accent-foreground: 0.9 0.015 255;
+    --sidebar-border: 0.22 0.04 260;
+    --sidebar-ring: 0.5 0.18 265;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "General Sans", system-ui, sans-serif;
+    font-feature-settings: "ss01" on, "ss02" on;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Cabinet Grotesk", system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  code, pre, .font-mono {
+    font-family: "Geist Mono", monospace;
+  }
+}
+
+@layer utilities {
+  .status-draft {
+    @apply bg-gray-100 text-gray-700 border border-gray-200;
+  }
+  .status-pending {
+    @apply bg-amber-50 text-amber-800 border border-amber-200;
+  }
+  .status-approved {
+    @apply bg-emerald-50 text-emerald-800 border border-emerald-200;
+  }
+  .status-rejected {
+    @apply bg-red-50 text-red-800 border border-red-200;
+  }
+  .status-director {
+    @apply bg-orange-50 text-orange-800 border border-orange-200;
+  }
+  .status-info {
+    @apply bg-blue-50 text-blue-800 border border-blue-200;
+  }
+  
+  .ats-sidebar-item {
+    @apply flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer;
+    color: oklch(var(--sidebar-foreground) / 0.7);
+  }
+  
+  .ats-sidebar-item:hover {
+    background: oklch(var(--sidebar-accent));
+    color: oklch(var(--sidebar-accent-foreground));
+  }
+  
+  .ats-sidebar-item.active {
+    background: oklch(var(--sidebar-primary) / 0.15);
+    color: oklch(var(--sidebar-primary));
+    font-weight: 600;
+  }
+  
+  .pipeline-stage {
+    @apply relative flex flex-col items-center;
+  }
+  
+  .pipeline-bar {
+    @apply w-full rounded-sm transition-all duration-500;
+  }
+  
+  .stat-card {
+    @apply bg-card border border-border rounded-lg p-5 hover:shadow-md transition-shadow;
+  }
+  
+  .page-header {
+    @apply flex items-center justify-between mb-6;
+  }
+  
+  .section-title {
+    font-family: "Cabinet Grotesk", system-ui, sans-serif;
+    @apply text-xl font-bold text-foreground tracking-tight;
+  }
+  
+  .data-table-row {
+    @apply hover:bg-muted/50 cursor-pointer transition-colors;
+  }
+
+  .badge-draft { @apply bg-gray-100 text-gray-600 border-gray-200; }
+  .badge-bh-pending { @apply bg-amber-50 text-amber-700 border-amber-200; }
+  .badge-dir-pending { @apply bg-orange-50 text-orange-700 border-orange-200; }
+  .badge-approved { @apply bg-emerald-50 text-emerald-700 border-emerald-200; }
+  .badge-rejected { @apply bg-red-50 text-red-700 border-red-200; }
+  .badge-shortlisted { @apply bg-blue-50 text-blue-700 border-blue-200; }
+  .badge-onhold { @apply bg-yellow-50 text-yellow-700 border-yellow-200; }
+  .badge-scheduled { @apply bg-purple-50 text-purple-700 border-purple-200; }
+  .badge-completed { @apply bg-emerald-50 text-emerald-700 border-emerald-200; }
+  .badge-sent { @apply bg-blue-50 text-blue-700 border-blue-200; }
+  .badge-accepted { @apply bg-emerald-50 text-emerald-700 border-emerald-200; }
+  .badge-negotiating { @apply bg-amber-50 text-amber-700 border-amber-200; }
+  .badge-pending { @apply bg-gray-50 text-gray-600 border-gray-200; }
+  .badge-uploaded { @apply bg-blue-50 text-blue-700 border-blue-200; }
+  .badge-verified { @apply bg-emerald-50 text-emerald-700 border-emerald-200; }
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(var(--border));
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(var(--muted-foreground) / 0.5);
+}
